@@ -132,4 +132,28 @@ SELECT COUNT(title) FROM film
 WHERE title LIKE '%Truman%';
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Business Situation 16: 
+Business Situation 16: We have a two staff members, with staff ids 1 and 2. We want to give a bonus to the staff member that handled the most payments. 
+					   Most in terms of number of payments processed, not total dollar amount.
+
+SQL Statement -
+SELECT staff_id, COUNT(amount) FROM payment
+GROUP BY staff_id
+ORDER BY COUNT(amount) DESC;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 17: Corporate HQ is conducting a study on the relationship between replacement cost and a movie MPAA Rating. What is the avg replacement cost per MPAA rating?
+
+SQL Statement -
+SELECT rating, ROUND(AVG(replacement_cost), 2) FROM film
+GROUP BY rating
+ORDER BY AVG(replacement_cost);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 18: We are running a promotion to reward our top 5 customers with coupons. What are the customer ids by total spend?
+
+SQL Statement -
+SELECT customer_id, SUM(amount) FROM payment
+GROUP BY customer_id
+ORDER BY SUM(amount) DESC
+LIMIT 5;
+
