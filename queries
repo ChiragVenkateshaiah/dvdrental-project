@@ -1,1 +1,10 @@
+This space is mainly for all the queries with respect to the business usecase:
+
+Business Situation and Challenge Questions are the two way approach that I have used to build this project of querying the dvdrental database
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation: We want to send out a promotional email to our existing customers!
+
+Challenge - 1: Grab the first_name and last_name of every customer and their email address
+Solution - SELECT first_name, last_name FROM customer;
 
