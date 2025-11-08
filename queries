@@ -3,8 +3,31 @@ This space is mainly for all the queries with respect to the business usecase:
 Business Situation and Challenge Questions are the two way approach that I have used to build this project of querying the dvdrental database
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Business Situation: We want to send out a promotional email to our existing customers!
+First things first: I have used the below time to query the columns of tables and columns of each individual tables
 
-Challenge - 1: Grab the first_name and last_name of every customer and their email address
-Solution - SELECT first_name, last_name FROM customer;
+SELECT table_name
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE'
+	AND table_schema = 'public'
+ORDER BY table_name;
+
+SELECT DISTINCT
+		column_name
+FROM information_schema.columns
+WHERE table_schema = 'public'
+	AND table_name = 'customer'
+ORDER BY column_name;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 1: We want to send out a promotional email to our existing customers!
+
+Challenge: Grab the first_name and last_name of every customer and their email address
+SQL statement - 
+SELECT first_name, last_name FROM customer;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 2: An Australian visitor isn't familiar with MPAA Movie ratings, we want to know the types of rating we have in our database, what rating do we have availabe?
+
+SQL statement -
+
 
