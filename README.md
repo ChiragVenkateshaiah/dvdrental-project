@@ -13,3 +13,6 @@ This repository contains SQL scripts, database schema, and sample queries execut
 - schema/ → Database table creation scripts
 - queries/ → Query practice and scenarios
 - data/ → Insert statements
+
+
+Please Note: Database used in this project is upload as dvdrental.tar format in the main branch of this repository.
