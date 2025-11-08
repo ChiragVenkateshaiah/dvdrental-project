@@ -157,3 +157,20 @@ GROUP BY customer_id
 ORDER BY SUM(amount) DESC
 LIMIT 5;
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 19: We are launching a plantinum service for our most loyal customers. We will assign platinum status to customers that have had 40 or more transactions payments.
+					   What customer_ids are eligible for platinum status?
+
+SQL Statement -
+SELECT customer_id, COUNT(amount) FROM payment
+GROUP BY customer_id
+HAVING COUNT(amount) >= 40;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 20: What are the customer_ids of customers who have spent more than $100 in payment transaction with our staff_id memeber 2?
+
+SQL Statement -
+SELECT customer_id, staff_id, SUM(amount) FROM payment
+WHERE staff_id = 2
+GROUP BY  customer_id, staff_id
+HAVING SUM(amount) > 100;
