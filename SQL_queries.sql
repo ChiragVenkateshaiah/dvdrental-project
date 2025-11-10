@@ -185,6 +185,30 @@ AND address_id < 500
 ORDER BY customer_id DESC
 LIMIT 1;
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 22: California sales taxs have changed and we need to alert our customers to this through emails. What are the emails of the customers who live in California
 
-------------------------
-Hi, I am commited again!
+SQL Statment -
+SELECT email, district
+FROM customer
+INNER JOIN address ON
+address.address_id = customer.address_id
+WHERE district = 'California';
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 23: A customer walks in and is a huge fan of the actor 'Nick Wahlberg'and wants to know which moveis he is in. Get a list of all the movies 'Nick Wahlberg' has been in
+
+SQL Statement -
+SELECT
+	title,
+	first_name,
+	last_name
+FROM film_actor
+INNER JOIN actor
+	ON actor.actor_id = film_actor.actor_id
+INNER JOIN film
+	ON film.film_id = film_actor.film_id
+WHERE first_name = 'Nick' AND last_name = 'Wahlberg';
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 24: 
