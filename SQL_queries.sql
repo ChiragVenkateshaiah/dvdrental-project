@@ -211,4 +211,38 @@ INNER JOIN film
 WHERE first_name = 'Nick' AND last_name = 'Wahlberg';
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Business Situation 24: 
+Business Situation 24: How many payments occurred on a Monday?
+
+SQL Statement -
+SELECT
+	TO_CHAR(payment_date, 'DAY') AS day_name,
+	COUNT(amount) AS total_payments
+FROM payment
+GROUP BY TO_CHAR(payment_date, 'DAY')
+ORDER BY total_payments DESC;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 25: Extract the returned film dvds on the timeframe of the days(Example '2005-05-29' AND '2005-05-30'). Also give the titles of the films on that days
+
+SQL Statement - Using sub-query to get the result
+
+SELECT title, film_id
+FROM film
+WHERE film_id IN
+(SELECT inventory.inventory_id
+FROM rental
+INNER JOIN inventory ON inventory.inventory_id = rental.inventory_id
+WHERE rental.return_date BETWEEN '2005-05-29' AND '2005-05-30')
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 26: Get the names of the customers where at least they have one payment more than $11
+
+SQL Statement -
+
+SELECT first_name, last_name
+FROM customer
+WHERE EXISTS
+(SELECT *
+FROM payment
+WHERE payment.customer_id = customer.customer_id
+AND amount > 11);
