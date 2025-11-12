@@ -246,3 +246,37 @@ WHERE EXISTS
 FROM payment
 WHERE payment.customer_id = customer.customer_id
 AND amount > 11);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Business Situation 27: The rental store owner wants to know and compare the various amounts of films we have per movie rating
+
+SQL Statement -
+
+SELECT  
+	SUM(CASE rating
+		WHEN 'NC-17' THEN 1
+		ELSE 0
+	END) AS nc17,
+	
+	SUM(CASE rating
+		WHEN 'R' THEN 1
+		ELSE 0
+	END) AS r,
+	
+	SUM(CASE rating
+		WHEN 'G' THEN 1
+		ELSE 0
+	END) AS g,
+	
+	SUM(CASE rating
+		WHEN 'PG' THEN 1
+		ELSE 0
+	END )AS pg,
+	
+	SUM(CASE rating
+		WHEN 'PG-13' THEN 1
+		ELSE 0
+	END) AS pg13
+	
+
+FROM film;
